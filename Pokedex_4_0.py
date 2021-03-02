@@ -517,6 +517,12 @@ def define_list():
     primalf = ['Normal Form', 'Primal Form']
     deoxys = 386
     deoxysf = ['Normal', 'Attack', 'Defence', 'Speed']
+    burmy = 412
+    burmyf = ['Grass Cloak', 'Sand Cloak', 'Trash Cloak']
+    cher = 421
+    cherf = ['Overcast', 'Sunshine']
+    shedon = [422, 423]
+    shedonf = ['West', 'East']
     rotom = 479
     rotomf = ['Electric', 'Heat', 'Wash', 'Frost', 'Fan', 'Mow']
     giratina = 487
@@ -526,6 +532,8 @@ def define_list():
     arcsil = [493, 773]
     typing = ['Normal', 'Fighting', 'Flying', 'Poison', 'Ground', 'Rock', 'Bug', 'Ghost', 'Steel', 'Fire', 'Water',
               'Grass', 'Electric', 'Psychic', 'Ice', 'Dragon', 'Dark', 'Fairy']
+    basc = 550
+    bascf = ['Red-Striped', 'Blue-Striped']
     deer = [585, 586]
     deerf = ['Spring', 'Summer', 'Fall', 'Winter']
     orus = [641, 642, 645]
@@ -572,6 +580,8 @@ def define_list():
     alcremfl = ['Vanilla Cream', 'Ruby Cream', 'Matcha Cream', 'Mint Cream', 'Lemon Cream', 'Salted Cream', 'Ruby Swirl',
                 'Caramel Swirl', 'Rainbow Swirl']
     alcremsw = ['Strawberry', 'Berry', 'Love', 'Star', 'Clover', 'Flower', 'Bow']
+    morp = 877
+    morpf = ['Full Belly', 'Hangry']
     eiscue = 875
     eiscuef = ['Ice Face', 'Noice Face']
     caler = 898
@@ -591,7 +601,7 @@ def define_list():
                 numb = float(row[0])    # Saves the pokemon's number
                 name = row[1]           # Saves the pokemon's name
                 reg = row[2]            # Saves the pokemon's region
-                wgt = row[3] + " lbs."   # Saves the pokemon's weight as a string
+                wgt = str(float(row[3])) + " lbs."   # Saves the pokemon's weight as a string
                 wgt2 = float(row[3])    # Saves the pokemon's weight as a floating number
                 hgt = row[4]            # Saves the pokemon's height
                 tp1 = row[5]            # Saves the pokemon's first type
@@ -718,6 +728,42 @@ def define_list():
                         p += 1
                         l += 1
                     spriteFo = sptm
+                elif int(numb) == burmy:
+                    p = 0
+                    l = 0
+                    sptm = [''] * len(spritemf.split('\n')) * 2
+                    ssptm = sspritemf.split('\n')
+                    for t in spritemf.split('\n'):
+                        sptm[p] = [t, burmyf[l]]
+                        p += 1
+                        sptm[p] = [ssptm[l], '\u2606 ' + burmyf[l] + ' \u2606']
+                        p += 1
+                        l += 1
+                    spriteFo = sptm
+                elif int(numb) == cher:
+                    p = 0
+                    l = 0
+                    sptm = [''] * len(spritemf.split('\n')) * 2
+                    ssptm = sspritemf.split('\n')
+                    for t in spritemf.split('\n'):
+                        sptm[p] = [t, cherf[l]]
+                        p += 1
+                        sptm[p] = [ssptm[l], '\u2606 ' + cherf[l] + ' \u2606']
+                        p += 1
+                        l += 1
+                    spriteFo = sptm
+                elif int(numb) in shedon:
+                    p = 0
+                    l = 0
+                    sptm = [''] * len(spritemf.split('\n')) * 2
+                    ssptm = sspritemf.split('\n')
+                    for t in spritemf.split('\n'):
+                        sptm[p] = [t, shedonf[l]]
+                        p += 1
+                        sptm[p] = [ssptm[l], '\u2606 ' + shedonf[l] + ' \u2606']
+                        p += 1
+                        l += 1
+                    spriteFo = sptm
                 elif int(numb) == rotom:
                     pass
                 elif int(numb) == giratina:
@@ -733,6 +779,18 @@ def define_list():
                         sptm[p] = [t, typing[l]]
                         p += 1
                         sptm[p] = [ssptm[l], '\u2606 ' + typing[l] + ' \u2606']
+                        p += 1
+                        l += 1
+                    spriteFo = sptm
+                elif int(numb) == basc:
+                    p = 0
+                    l = 0
+                    sptm = [''] * len(spritemf.split('\n')) * 2
+                    ssptm = sspritemf.split('\n')
+                    for t in spritemf.split('\n'):
+                        sptm[p] = [t, bascf[l]]
+                        p += 1
+                        sptm[p] = [ssptm[l], '\u2606 ' + bascf[l] + ' \u2606']
                         p += 1
                         l += 1
                     spriteFo = sptm
@@ -864,8 +922,6 @@ def define_list():
                     pass
                 elif int(numb) == ori:
                     pass
-                elif int(numb) == lycan:
-                    pass
                 elif int(numb) == wishi:
                     p = 0
                     l = 0
@@ -927,13 +983,32 @@ def define_list():
                     spriteFo = sptm
                 elif int(numb) == alcrem:
                     p = 0
+                    fl = 0
+                    sw = 0
+                    ssptm = sspritemf.split('\n')
+                    sptm = [''] * len(spritemf.split('\n')) + [''] * len(ssptm)
+                    for t in spritemf.split('\n'):
+                        if sw == len(alcremsw):
+                            fl += 1
+                            sw = 0
+                        sptm[p] = [t, alcremfl[fl] + ' ' + alcremsw[sw]]
+                        p += 1
+                        sw += 1
+                    sw = 0
+                    for l in ssptm:
+                        sptm[p] = [l, '\u2606 ' + alcremsw[sw] + ' \u2606']
+                        p += 1
+                        sw += 1
+                    spriteFo = sptm
+                elif int(numb) == morp:
+                    p = 0
                     l = 0
                     sptm = [''] * len(spritemf.split('\n')) * 2
                     ssptm = sspritemf.split('\n')
                     for t in spritemf.split('\n'):
-                        sptm[p] = [t, eiscuef[l]]
+                        sptm[p] = [t, morpf[l]]
                         p += 1
-                        sptm[p] = [ssptm[l], '\u2606 ' + eiscuef[l] + ' \u2606']
+                        sptm[p] = [ssptm[l], '\u2606 ' + morpf[l] + ' \u2606']
                         p += 1
                         l += 1
                     spriteFo = sptm
@@ -961,51 +1036,35 @@ def define_list():
                         spriteFo.append([spritef, 'Female'])
                         spriteFo.append([sspritef, '\u2606 Female \u2606'])
 
-                if len(spritem.split('\n')) == 2:
-                    spritem = spritem.split('\n')
-                else:
-                    spritem = [spritem]
-
-                if len(sspritem.split('\n')) == 2:
-                    sspritem = sspritem.split('\n')
-                else:
-                    sspritem = [sspritem]
-
-                if spriteg != '' and spritem[0] != '':
-                    if len(spritem) == 2:
+                if spritem != '':
+                    if len(spritem.split('\n')) == 2:
+                        spritem = spritem.split('\n')
+                        sspritem = sspritem.split('\n')
                         spriteFo.append([spritem[0], 'Mega Y'])
                         spriteFo.append([sspritem[0], '\u2606 Mega Y \u2606'])
                         spriteFo.append([spritem[1], 'Mega X'])
                         spriteFo.append([sspritem[1], '\u2606 Mega X \u2606'])
                     elif int(numb) in primal:
+                        spritem = [spritem]
+                        sspritem = [sspritem]
                         spriteFo.append([spritem[0], primalf[1]])
                         spriteFo.append([sspritem[0], '\u2606 ' + primalf[1] + ' \u2606'])
                     elif int(numb) == necro:
+                        spritem = [spritem]
+                        sspritem = [sspritem]
                         spriteFo.append([spritem[0], 'Ultra Burst'])
                         spriteFo.append([sspritem[0], '\u2606 Ultra Burst \u2606'])
                     else:
+                        spritem = [spritem]
+                        sspritem = [sspritem]
                         spriteFo.append([spritem[0], 'Mega'])
                         spriteFo.append([sspritem[0], '\u2606 Mega \u2606'])
+                else:
+                    pass
+
+                if spriteg != '':
                     spriteFo.append([spriteg, 'Gigantamax'])
                     spriteFo.append([sspriteg, '\u2606 Gigantamax \u2606'])
-                elif spriteg != '':
-                    spriteFo.append([spriteg, 'Gigantamax'])
-                    spriteFo.append([sspriteg, '\u2606 Gigantamax \u2606'])
-                elif spritem[0] != '':
-                    if len(spritem) == 2:
-                        spriteFo.append([spritem[0], 'Mega Y'])
-                        spriteFo.append([sspritem[0], '\u2606 Mega Y \u2606'])
-                        spriteFo.append([spritem[1], 'Mega X'])
-                        spriteFo.append([sspritem[1], '\u2606 Mega X \u2606'])
-                    elif int(numb) in primal:
-                        spriteFo.append([spritem[0], primalf[1]])
-                        spriteFo.append([sspritem[0], '\u2606 ' + primalf[1] + ' \u2606'])
-                    elif int(numb) == necro:
-                        spriteFo.append([spritem[0], 'Ultra Burst'])
-                        spriteFo.append([sspritem[0], '\u2606 Ultra Burst \u2606'])
-                    else:
-                        spriteFo.append([spritem[0], 'Mega'])
-                        spriteFo.append([sspritem[0], '\u2606 Mega \u2606'])
                 else:
                     pass
 

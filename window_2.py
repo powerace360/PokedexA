@@ -1003,6 +1003,9 @@ def evolution():
     global press, list2, evolframe, list1
     global arrow1, arrow2, arrow3, arrow4, arrow5, arrow6, arrow7, arrow8, arrow9
     global sprite1, sprite2, sprite3, sprite4, sprite5, sprite6, sprite7, sprite8, sprite9, sprite10
+    global sprite11, sprite12, sprite13, sprite14, sprite15, sprite16, sprite17, sprite18, sprite19, sprite20
+    global sprite21, sprite22, sprite23, sprite24, sprite25, sprite26, sprite27, sprite28, sprite29, sprite30
+    global sprite, canvasE
     clr = evolframe.grid_slaves()
     for cl in clr:
         cl.destroy()
@@ -1476,7 +1479,7 @@ def evolution():
                 else:
                     pass
         evolframe = tkinter.Frame(framebottom, bg='#333333')
-        evolframe.rowconfigure([0, 1, 2], minsize=10, weight=1)
+        evolframe.rowconfigure([0, 1, 2, 3], minsize=10, weight=1)
         evolframe.columnconfigure([0, 1, 2, 3, 4, 5, 6, 7, 8], minsize=10, weight=1)
         evolframe.pack()
         # First Sprite
@@ -1534,7 +1537,7 @@ def evolution():
         canvasE3.grid(row=2, column=0)
         # Second Evolution method Label
         evo2 = tkinter.Label(evolframe, text=list3[2]['EvoM'], wraplength=awr, bg='#333333', fg='#FFFFFF')
-        evo2.grid(row=1, column=0, pady=4)
+        evo2.grid(row=3, column=0, pady=4)
         # Third Sprite
         sprite4 = imagesize(list3[3]['SpriteForm'][place][0], w, h)
         canvasE4 = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
@@ -1542,7 +1545,7 @@ def evolution():
         canvasE4.grid(row=2, column=1)
         # Third Evolution method Label
         evo3 = tkinter.Label(evolframe, text=list3[3]['EvoM'], wraplength=awr, bg='#333333', fg='#FFFFFF')
-        evo3.grid(row=1, column=1, pady=4)
+        evo3.grid(row=3, column=1, pady=4)
         # Fourth Sprite
         sprite5 = imagesize(list3[4]['SpriteForm'][place][0], w, h)
         canvasE5 = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
@@ -1550,7 +1553,7 @@ def evolution():
         canvasE5.grid(row=2, column=2)
         # Fourth Evolution method Label
         evo4 = tkinter.Label(evolframe, text=list3[4]['EvoM'], wraplength=awr, bg='#333333', fg='#FFFFFF')
-        evo4.grid(row=1, column=2, pady=4)
+        evo4.grid(row=3, column=2, pady=4)
         # Fifth Sprite
         sprite6 = imagesize(list3[5]['SpriteForm'][place][0], w, h)
         canvasE6 = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
@@ -1558,7 +1561,7 @@ def evolution():
         canvasE6.grid(row=2, column=3)
         # Fifth Evolution method Label
         evo5 = tkinter.Label(evolframe, text=list3[5]['EvoM'], wraplength=awr, bg='#333333', fg='#FFFFFF')
-        evo5.grid(row=1, column=3, pady=4)
+        evo5.grid(row=3, column=3, pady=4)
         # Sixth Sprite
         sprite7 = imagesize(list3[6]['SpriteForm'][place][0], w, h)
         canvasE7 = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
@@ -1566,7 +1569,7 @@ def evolution():
         canvasE7.grid(row=2, column=5)
         # Sixth Evolution method Label
         evo6 = tkinter.Label(evolframe, text=list3[6]['EvoM'], wraplength=awr, bg='#333333', fg='#FFFFFF')
-        evo6.grid(row=1, column=5, pady=4)
+        evo6.grid(row=3, column=5, pady=4)
         # Seventh Sprite
         sprite8 = imagesize(list3[7]['SpriteForm'][place][0], w, h)
         canvasE8 = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
@@ -1574,7 +1577,7 @@ def evolution():
         canvasE8.grid(row=2, column=6)
         # Seventh Evolution method Label
         evo7 = tkinter.Label(evolframe, text=list3[7]['EvoM'], wraplength=awr, bg='#333333', fg='#FFFFFF')
-        evo7.grid(row=1, column=6, pady=4)
+        evo7.grid(row=3, column=6, pady=4)
         # Eighth Sprite
         sprite9 = imagesize(list3[8]['SpriteForm'][place][0], w, h)
         canvasE9 = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
@@ -1582,7 +1585,7 @@ def evolution():
         canvasE9.grid(row=2, column=7)
         # Eighth Evolution method Label
         evo8 = tkinter.Label(evolframe, text=list3[8]['EvoM'], wraplength=awr, bg='#333333', fg='#FFFFFF')
-        evo8.grid(row=1, column=7, pady=4)
+        evo8.grid(row=3, column=7, pady=4)
         # Ninth Sprite
         sprite10 = imagesize(list3[9]['SpriteForm'][place][0], w, h)
         canvasE10 = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
@@ -1590,7 +1593,7 @@ def evolution():
         canvasE10.grid(row=2, column=8)
         # Ninth Evolution method Label
         evo9 = tkinter.Label(evolframe, text=list3[9]['EvoM'], wraplength=awr, bg='#333333', fg='#FFFFFF')
-        evo9.grid(row=1, column=8, pady=4)
+        evo9.grid(row=3, column=8, pady=4)
     elif list2[press]['TreeT'] == 'I':
         # evolution tree 1-2-3-M
         h = 80
@@ -2549,8 +2552,76 @@ def evolution():
         canvasE5.grid(row=2, column=4)
     elif list2[press]['TreeT'] == 'X':
         # Unused
-        evolframe = tkinter.Frame(framebottom)
-        pass
+        h = 80
+        w = 80
+        group = list2[press]['Group']
+        for i in list1.keys():
+            if group == list1[i]['Group']:
+                if list1[i]['Placement'] == 'A':
+                    list3[1] = list1[i]
+                if list1[i]['Placement'] == 'B':
+                    list3[2] = list1[i]
+                if list1[i]['Placement'] == 'C':
+                    list3[3] = list1[i]
+                else:
+                    pass
+        evolframe = tkinter.Frame(framebottom, bg='#333333')
+        evolframe.rowconfigure([0, 1, 2], minsize=10, weight=1)
+        evolframe.columnconfigure([0, 1, 2, 3, 4], minsize=10, weight=1)
+        evolframe.pack()
+
+        sprite1 = imagesize(list3[1]['SpriteForm'][0][0], w, h)
+        canvasE1 = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
+        canvasE1.create_image(w / 2, h / 2, image=sprite1)
+        canvasE1.grid(row=1, column=0)
+        # first arrow
+        arrow1 = imagesize(adbu, awdbud, ahdbud)
+        canvasA1 = tkinter.Canvas(evolframe, width=awdbud, height=ahdbud, bg='#333333', highlightthickness=0)
+        canvasA1.create_image(awdbud / 2, ahdbud / 2, image=arrow1)
+        canvasA1.grid(row=0, column=1, sticky='e', rowspan=2)
+        # Second arrow
+        arrow2 = imagesize(adbd, awdbud, ahdbud)
+        canvasA2 = tkinter.Canvas(evolframe, width=awdbud, height=ahdbud, bg='#333333', highlightthickness=0)
+        canvasA2.create_image(awdbud / 2, ahdbud / 2, image=arrow2)
+        canvasA2.grid(row=1, column=1, sticky='e', rowspan=2)
+
+        evo1 = tkinter.Label(evolframe, text=list3[2]['EvoM'], wraplength=awr, bg='#333333', fg='#FFFFFF')
+        evo1.grid(row=0, column=1, pady=4)
+
+        evo2 = tkinter.Label(evolframe, text=list3[3]['EvoM'], wraplength=awr, bg='#333333', fg='#FFFFFF')
+        evo2.grid(row=2, column=1, pady=4)
+
+        sprite2 = imagesize(list3[2]['SpriteForm'][0][0], w, h)
+        canvasE2 = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
+        canvasE2.create_image(w / 2, h / 2, image=sprite2)
+        canvasE2.grid(row=0, column=2)
+
+        sprite3 = imagesize(list3[3]['SpriteForm'][0][0], w, h)
+        canvasE3 = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
+        canvasE3.create_image(w / 2, h / 2, image=sprite3)
+        canvasE3.grid(row=2, column=2)
+        # first arrow
+        arrow3 = imagesize(adbd, awdbud, ahdbud)
+        canvasA3 = tkinter.Canvas(evolframe, width=awdbud, height=ahdbud, bg='#333333', highlightthickness=0)
+        canvasA3.create_image(awdbud / 2, ahdbud / 2, image=arrow3)
+        canvasA3.grid(row=0, column=3, sticky='e', rowspan=2)
+        # Second arrow
+        arrow4 = imagesize(adbu, awdbud, ahdbud)
+        canvasA4 = tkinter.Canvas(evolframe, width=awdbud, height=ahdbud, bg='#333333', highlightthickness=0)
+        canvasA4.create_image(awdbud / 2, ahdbud / 2, image=arrow4)
+        canvasA4.grid(row=1, column=3, sticky='e', rowspan=2)
+
+        evo3 = tkinter.Label(evolframe, text='Mega Evolve', wraplength=awr, bg='#333333', fg='#FFFFFF')
+        evo3.grid(row=0, column=3, pady=4)
+
+        evo4 = tkinter.Label(evolframe, text='Mega Evolve', wraplength=awr, bg='#333333', fg='#FFFFFF')
+        evo4.grid(row=2, column=3, pady=4)
+
+        sprite4 = list3[3]['SpriteM'][0]
+        sprite4 = imagesize(sprite4, w, h)
+        canvasE4 = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
+        canvasE4.create_image(42, h / 2, image=sprite4)
+        canvasE4.grid(row=1, column=4)
     elif list2[press]['TreeT'] == 'Y':
         # evolution tree 1-2/2+3
         h = 80
@@ -2592,7 +2663,7 @@ def evolution():
         canvasA2.grid(row=1, column=1, sticky='e', rowspan=2)
         # First to second evolution method
         evo1 = tkinter.Label(evolframe, text=list3[2]['EvoM'], wraplength=awr, bg='#333333', fg='#FFFFFF')
-        evo1.grid(row=0, column=1, pady=4, sticky='n')
+        evo1.grid(row=0, column=1, pady=4)
         # Second Evolution Sprite
         sprite2 = imagesize(list3[2]['SpriteForm'][place][0], w, h)
         canvasE2 = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
@@ -2612,9 +2683,43 @@ def evolution():
         canvasE5.create_image(42, h / 2, image=sprite5)
         canvasE5.grid(row=2, column=3)
     elif list2[press]['TreeT'] == 'Z':
-        # Shows multiple forms
-        evolframe = tkinter.Frame(framebottom)
-        pass
+        # evolution tree 1<-2
+        r = 0
+        c = 0
+        p = 1
+        fm = 0
+        sprite = {}
+        canvasE = {}
+        group = list2[press]['Group']
+        for i in list1.keys():
+            if group == list1[i]['Group']:
+                list3[p] = list1[i]
+                sprite[p] = 'sprite' + str(p)
+                canvasE[p] = 'canvasE' + str(p)
+                p += 1
+        x = int(len(list3[1]['SpriteForm']) / 2)
+        if x > 8:
+            h = 75
+            w = 75
+        else:
+            h = 80
+            w = 80
+        evolframe = tkinter.Frame(framebottom, bg='#333333')
+        evolframe.rowconfigure([0], weight=1)
+        evolframe.columnconfigure([0], weight=1)
+        evolframe.pack()
+        for i in range(x):
+            if c == 9:
+                c = 0
+                r += 1
+                if r == 3:
+                    break
+            sprite[i] = imagesize(list3[1]['SpriteForm'][fm][0], w, h)
+            canvasE[i] = tkinter.Canvas(evolframe, width=w, height=h, bg='#333333', highlightthickness=0)
+            canvasE[i].create_image(w / 2, h / 2, image=sprite[i])
+            canvasE[i].grid(row=r, column=c)
+            c += 1
+            fm += 2
     elif list2[press]['TreeT'] == 'AA':
         # evolution tree 1<-2
         h = 80
